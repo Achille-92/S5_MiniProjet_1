@@ -64,6 +64,7 @@ void ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED(APPW_ACTION_ITEM 
   Val = APPW_GetValue(ID_SCREEN_00, ID_SLIDER_00, NULL);
   //Val vaut une valeur entre 0 et 100
   //code à exécuter à mettre ici
+	DAC->DHR12R1 = 4095.0*Val/100.0;
 }
 
 /*********************************************************************
@@ -73,7 +74,7 @@ void ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED(APPW_ACTION_ITEM 
 void ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED(APPW_ACTION_ITEM * pAction, WM_HWIN hScreen, WM_MESSAGE * pMsg, int * pResult) {
   int Val;
   Val = APPW_GetValue(ID_SCREEN_00, ID_ROTARY_00, NULL);
-  //Val vaut une valeur entre -900 et 900
+  //Val vaut une valeur entre -300 et 300
   //code à exécuter à mettre ici
 }
 

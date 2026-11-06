@@ -51,11 +51,14 @@ int main(void)
 	RCC->AHB1ENR|=(1<<5); //EN GPIOF
 	RCC->APB1ENR|=(1<<7); //EN TIM13
 	RCC->AHB1ENR|=(1<<8); // Enable GPIO I pour Led
+	RCC->APB1ENR |=(1<<29); //activation DAC
+	RCC->AHB1ENR |=(1<<0);	// activation GPIOA pour DAC
 	//Initialiser vos périphériques ici
 
 	GPIOF->MODER |= (2<<16); //PF8 in AF mode
 	GPIOF->AFR[1]|=(9<<0); //PF8 in AF9 mode
 	GPIOI->MODER |= (1<<4); //PI2 in Output Mode
+	GPIOA->MODER |=(3<<8); //PA4 (DAC) en anaog mode
 	
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
 	TIM13->CCER |= (1<<0); 
@@ -66,6 +69,7 @@ int main(void)
 	
 	TIM13->CR1 |= (1<<0);
 	
+	DAC->CR |=(1<<0); // output channel 1 sur PA4
 	
 	/**********************************
 	Fin Initialisation périphérique

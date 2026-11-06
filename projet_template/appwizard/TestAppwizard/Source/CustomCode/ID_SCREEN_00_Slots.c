@@ -76,6 +76,8 @@ void ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED(APPW_ACTION_ITEM 
   Val = APPW_GetValue(ID_SCREEN_00, ID_ROTARY_00, NULL);
   //Val vaut une valeur entre -300 et 300
   //code à exécuter à mettre ici
+	
+	TIM13->CCR1 = (40000.0*(Val+300))/600.0; //rapport cyclique CCR/ARR
 }
 
 /*********************************************************************
@@ -94,10 +96,8 @@ void ID_SCREEN_00__APPW_NOTIFICATION_INITDIALOG__ID_TIMER_00__APPW_JOB_START(APP
 *       ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER
 */
 void ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER(APPW_ACTION_ITEM * pAction, WM_HWIN hScreen, WM_MESSAGE * pMsg, int * pResult) {
-  GUI_USE_PARA(pAction);
-  GUI_USE_PARA(hScreen);
-  GUI_USE_PARA(pMsg);
-  GUI_USE_PARA(pResult);
+	APPW_SetValue(ID_SCREEN_00,ID_GAUGE_00,ADC3->DR);
+	ADC3->CR2 |=(1<<30); // Démarrer la conversion
 }
 
 /*************************** End of file ****************************/

@@ -47,29 +47,37 @@ int main(void)
 	/**********************************
 	Début Initialisation périphérique
 	**********************************/
+	//Initialiser vos périphériques ici
 
-	RCC->AHB1ENR|=(1<<5); //EN GPIOF
-	RCC->APB1ENR|=(1<<7); //EN TIM13
+	RCC->AHB1ENR|=(1<<5); //Enable GPIOF (pour Timer13 et potentiomètre)
+	RCC->APB1ENR|=(1<<7); //Enable TIM13
 	RCC->AHB1ENR|=(1<<8); // Enable GPIO I pour Led
 	RCC->APB1ENR |=(1<<29); //activation DAC
 	RCC->AHB1ENR |=(1<<0);	// activation GPIOA pour DAC
-	//Initialiser vos périphériques ici
+	RCC->APB2ENR |=(1<<10); // Activation ADC3 pour le potentiomètre
 
 	GPIOF->MODER |= (2<<16); //PF8 in AF mode
 	GPIOF->AFR[1]|=(9<<0); //PF8 in AF9 mode
 	GPIOI->MODER |= (1<<4); //PI2 in Output Mode
 	GPIOA->MODER |=(3<<8); //PA4 (DAC) en anaog mode
+	GPIOF->MODER |=(3<<20); //FP10 potentiomètre en analog mode
 	
+	// Timer
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
 	TIM13->CCER |= (1<<0); 
-	
 	TIM13->PSC = 7; //prescaler
 	TIM13->ARR = 39999; //Periode
 	TIM13->CCR1 = 20000; //rapport cyclique CCR/ARR
-	
 	TIM13->CR1 |= (1<<0);
 	
+	//Dac
 	DAC->CR |=(1<<0); // output channel 1 sur PA4
+	
+	//Potentiomètre
+	//ADC_SQR1 a laisser sur 0
+	ADC3->SQR3 |=(8<<0); // Permet d'indiquer que c'est IN8 qu'on associe à la conversion N°0
+	ADC3->CR2 |=(1<<0); // Activer l'ADC3
+	ADC3->CR2 |=(1<<30); // Démarrer la conversion
 	
 	/**********************************
 	Fin Initialisation périphérique

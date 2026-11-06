@@ -23,7 +23,7 @@ static void Thread_Test (void *argument)
   // Initialisations propres à la tâche (si besoin) ici
 
   while (1)
-  {
+  {TIM13->CR1 |= (1<<0);
     // Votre boucle de test ici (mesure de distance, balayage du servo, etc.)
 
     osDelay(100);   // période de la boucle : 100 ms
@@ -48,8 +48,22 @@ int main(void)
 	Début Initialisation périphérique
 	**********************************/
 
+	RCC->AHB1ENR|=(1<<5); //EN GPIOF
+	RCC->APB1ENR|=(1<<7); //EN TIM13
 	//Initialiser vos périphériques ici
 
+	GPIOF->MODER |= (2<<16); //PF8 in AF mode
+	GPIOF->AFR[8]|=(9<<0); //PF8 in AF9 mode
+	
+	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
+	TIM13->CCER |= (1<<0); 
+	
+	TIM13->PSC = 7; //prescaler
+	TIM13->ARR = 39999; //Periode
+	TIM13->CCR1 = 20000; //rapport cyclique CCR/ARR
+	
+	TIM13->CR1 |= (1<<0);
+	
 	/**********************************
 	Fin Initialisation périphérique
 	**********************************/
@@ -58,15 +72,15 @@ int main(void)
 	Utilisation RTOS (Keil RTX5)
 	**********************************/
 	#ifdef RTE_CMSIS_RTOS2
-	  /* Initialize CMSIS-RTOS2 */
+	  // Initialize CMSIS-RTOS2 
 	  osKernelInitialize ();
 
-	  /* Create thread functions that start executing */
+	  // Create thread functions that start executing 
 		Init_Ethernet();
 		Init_GUIThread();
 		Init_TestThread();   // tâche de test (boucle avec osDelay)
 
-	  /* Start thread execution */
+	  // Start thread execution 
 	  osKernelStart();
 	#endif
 

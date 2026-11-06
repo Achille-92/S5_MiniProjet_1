@@ -1,14 +1,9 @@
-./objects/rtx_evr.o: \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS-RTX\5.9.0\Source\rtx_evr.c \
+./objects/rtx_evr.o: C:\ARM\ARM\CMSIS-RTX\5.9.1\Source\rtx_evr.c \
   RTE\_Target_1\Pre_Include_Global.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\string.h \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\cmsis_compiler.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stdint.h \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\Core\Include\.\m-profile\cmsis_armclang_m.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\arm_acle.h \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS-RTX\5.9.0\Include\rtx_evr.h \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS-RTX\5.9.0\Include\rtx_os.h \
-  C:\Keil_v5\ARM\ARMCLANG\include\stddef.h \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS\6.0.0\CMSIS\RTOS2\Include\cmsis_os2.h \
-  C:\Users\romain\AppData\Local\Arm\Packs\ARM\CMSIS-RTX\5.9.0\Include\rtx_def.h \
+  C:\ARM\ARM\CMSIS\6.3.0\CMSIS\Core\Include\cmsis_compiler.h \
+  C:\ARM\ARM\CMSIS\6.3.0\CMSIS\Core\Include\cmsis_armclang.h \
+  C:\ARM\ARM\CMSIS-RTX\5.9.1\Include\rtx_evr.h \
+  C:\ARM\ARM\CMSIS-RTX\5.9.1\Include\rtx_os.h \
+  C:\ARM\ARM\CMSIS\6.3.0\CMSIS\RTOS2\Include\cmsis_os2.h \
+  C:\ARM\ARM\CMSIS-RTX\5.9.1\Include\rtx_def.h \
   RTE\_Target_1\RTE_Components.h RTE\CMSIS\RTX_Config.h

@@ -1,3 +1,4 @@
+
 /*------------------------------------------------------------------------------
  * MDK Middleware - Component ::Network:Interface
  * Copyright (c) 2004-2021 Arm Limited (or its affiliates). All rights reserved.
@@ -21,7 +22,7 @@
 //   <i>Value FF-FF-FF-FF-FF-FF is not allowed,
 //   <i>LSB of first byte must be 0 (an ethernet Multicast bit).
 //   <i>Default: "1E-30-6C-A2-45-5E"
-#define ETH0_MAC_ADDR           "1E-30-6C-A2-45-5E"
+#define ETH0_MAC_ADDR           "1E-30-6C-67-68-69"
 
 //   <e>VLAN
 //   <i>Enable or disable Virtual LAN

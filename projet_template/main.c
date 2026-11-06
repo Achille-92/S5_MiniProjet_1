@@ -23,7 +23,7 @@ static void Thread_Test (void *argument)
   // Initialisations propres à la tâche (si besoin) ici
 
   while (1)
-  {TIM13->CR1 |= (1<<0);
+  {
     // Votre boucle de test ici (mesure de distance, balayage du servo, etc.)
 
     osDelay(100);   // période de la boucle : 100 ms
@@ -50,10 +50,12 @@ int main(void)
 
 	RCC->AHB1ENR|=(1<<5); //EN GPIOF
 	RCC->APB1ENR|=(1<<7); //EN TIM13
+	RCC->AHB1ENR|=(1<<8); // Enable GPIO I pour Led
 	//Initialiser vos périphériques ici
 
 	GPIOF->MODER |= (2<<16); //PF8 in AF mode
-	GPIOF->AFR[8]|=(9<<0); //PF8 in AF9 mode
+	GPIOF->AFR[1]|=(9<<0); //PF8 in AF9 mode
+	GPIOI->MODER |= (1<<4); //PI2 in Output Mode
 	
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
 	TIM13->CCER |= (1<<0); 
@@ -64,13 +66,14 @@ int main(void)
 	
 	TIM13->CR1 |= (1<<0);
 	
+	
 	/**********************************
 	Fin Initialisation périphérique
 	**********************************/
 
 	/**********************************
 	Utilisation RTOS (Keil RTX5)
-	**********************************/
+	**********************************/ 
 	#ifdef RTE_CMSIS_RTOS2
 	  // Initialize CMSIS-RTOS2 
 	  osKernelInitialize ();
@@ -87,5 +90,6 @@ int main(void)
   /* Infinite loop  (ne s'exécute pas avec le RTOS!!!)*/
   while (1)
   {
+		
   }
 }

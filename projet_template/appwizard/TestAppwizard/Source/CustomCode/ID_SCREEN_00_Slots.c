@@ -46,6 +46,13 @@ void ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED(APPW_ACTION_ITEM 
   Val = APPW_GetValue(ID_SCREEN_00, ID_SWITCH_00, NULL);
   //Val vaut 0 ou 1
   //code à exécuter à mettre ici
+	GPIOI->BSRR |=(1<<18); // Ativer le reset de la bascule
+	if(Val == 1){
+		GPIOI->BSRR |=(1<<2); // Mettre à 1 la sortie
+	}
+	else{
+		GPIOI->BSRR &=~(0<<2); // Mettre à 0 la sortie
+	}
 }
 
 /*********************************************************************

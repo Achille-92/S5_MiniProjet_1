@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\MiniProjet.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\MiniProjet.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Nov  6 15:20:15 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Fri Nov  6 16:34:53 2026
 <BR><P>
 <H3>Maximum Stack Usage =        696 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -55,6 +55,7 @@ Mutually Recursive functions
  <LI><a href="#[336]">_ResolveTerm</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[336]">_ResolveTerm</a><BR>
  <LI><a href="#[73d]">net_sys_error</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[73d]">net_sys_error</a><BR>
  <LI><a href="#[1ab]">osRtxIdleThread</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[1ab]">osRtxIdleThread</a><BR>
+ <LI><a href="#[198]">Thread_Test</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[198]">Thread_Test</a><BR>
  <LI><a href="#[3b8]">APPW__SetUnTouchable</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[3b8]">APPW__SetUnTouchable</a><BR>
  <LI><a href="#[8f8]">net_strcasecmp</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[8f8]">net_strcasecmp</a><BR>
  <LI><a href="#[6b4]">WM_InvalidateWindowAndDescs</a>&nbsp;&nbsp;&nbsp;&rArr;&nbsp;&nbsp;&nbsp;<a href="#[6b4]">WM_InvalidateWindowAndDescs</a><BR>
@@ -9891,8 +9892,8 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> id_screen_00.o(.rodata._aAction)
 </UL>
-<P><STRONG><a name="[2b1]"></a>ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED))
-<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED &rArr; APPW_GetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
+<P><STRONG><a name="[2b1]"></a>ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED))
+<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = ID_SCREEN_00__ID_SWITCH_00__WM_NOTIFICATION_VALUE_CHANGED &rArr; APPW_GetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetValue
 </UL>
@@ -14582,7 +14583,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ft5336.o(.data.ft5336_ts_drv)
 </UL>
-<P><STRONG><a name="[314]"></a>main</STRONG> (Thumb, 138 bytes, Stack size 0 bytes, main.o(.text.main))
+<P><STRONG><a name="[314]"></a>main</STRONG> (Thumb, 166 bytes, Stack size 0 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = main &rArr; configuration_overclock &rArr; BSP_SDRAM_Init &rArr; BSP_SDRAM_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8f2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
@@ -16051,10 +16052,14 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[198]"></a>Thread_Test</STRONG> (Thumb, 24 bytes, Stack size 0 bytes, main.o(.text.Thread_Test))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = Thread_Test &rArr; osDelay
+<P><STRONG><a name="[198]"></a>Thread_Test</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, main.o(.text.Thread_Test))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8 + In Cycle
+<LI>Call Chain = Thread_Test &rArr;  Thread_Test (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
+<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
+</UL>
+<BR>[Called By]<UL><LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>

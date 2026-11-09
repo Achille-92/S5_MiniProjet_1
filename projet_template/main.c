@@ -51,6 +51,8 @@ static void Thread_Test (void *argument)
 		
 		servo_set_angle(angle);
 		
+		
+		
     osDelay(100);   // période de la boucle : 100 ms
   }
 }
@@ -85,9 +87,10 @@ int main(void)
 	RCC->APB1ENR|=(1<<7); //Enable TIM13
 	RCC->AHB1ENR|=(1<<8); // Enable GPIO I pour Led
 	RCC->APB1ENR |=(1<<29); //activation DAC
-	RCC->AHB1ENR |=(1<<0);	// activation GPIOA pour DAC
+	RCC->AHB1ENR |=(1<<0);	// activation GPIOA pour DAC, et ECHO
 	RCC->APB2ENR |=(1<<10); // Activation ADC3 pour le potentiomètre
 	RCC->APB2ENR |= (1<<17); // Enable TIM10
+	RCC->APB2ENR |= (1<<14); // Activer SYSCFG pour IRQ sur ECHO
 	
 
 	GPIOF->MODER |= (2<<16); //PF8 in AF mode
@@ -97,6 +100,8 @@ int main(void)
 	GPIOF->MODER |=(3<<20); //FP10 potentiomètre en analog mode
 	GPIOF->MODER |= (2<<12); // PF6 in AF Mode
 	GPIOF->AFR[0] |= (3<<24); // PF6 in AF3 Mode (IM10_CH1) 
+	// Metre IRQ EXTI0 sur PA0/A0
+	//SYSCFG->EXTICR[0] |= (0<<0); Inutile l'idée est là, on choisit PA[x] pin
 	
 	// TIM13
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1

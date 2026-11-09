@@ -22,12 +22,13 @@ void servo_set_angle(int deg);
  *      Tâche de test (vide) : à compléter par les étudiants
  *---------------------------------------------------------------------------*/
 osThreadId_t tid_Test;
+int angle;
 
 static void Thread_Test (void *argument)
 {
   (void)argument;
   // Initialisations propres à la tâche (si besoin) ici
-	int angle=0, sens = 0;
+	int sens = 0;
 
   while (1)
   {
@@ -47,6 +48,7 @@ static void Thread_Test (void *argument)
 			angle=0;
 			sens=0;
 		}
+		
 		servo_set_angle(angle);
 		
     osDelay(100);   // période de la boucle : 100 ms
@@ -63,9 +65,9 @@ static int Init_TestThread (void)
 }
 
 void servo_set_angle(int deg){
-	int val,min=0,max=180;
-	val = (40000.0*deg)/180.0;
-	TIM10->CCR1 = val; //rapport cyclique CCR/ARR
+	int val;
+	val = 25000.0*deg/180.0;
+	TIM13->CCR1 = 5000+val; //rapport cyclique CCR/ARR
 	
 }
 

@@ -20,7 +20,7 @@ Purpose     : AppWizard managed file, function content could be changed
 
 /*** Begin of user code area ***/
 #include "stm32f7xx.h"                  // Device header
-
+#include <stdio.h>
 /*** End of user code area ***/
 
 /*********************************************************************
@@ -77,7 +77,7 @@ void ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED(APPW_ACTION_ITEM 
   //Val vaut une valeur entre -300 et 300
   //code à exécuter à mettre ici
 	
-	TIM13->CCR1 = (40000.0*(Val+300))/600.0; //rapport cyclique CCR/ARR
+	//TIM13->CCR1 = (40000.0*(Val+300))/600.0; //rapport cyclique CCR/ARR
 }
 
 /*********************************************************************
@@ -95,9 +95,13 @@ void ID_SCREEN_00__APPW_NOTIFICATION_INITDIALOG__ID_TIMER_00__APPW_JOB_START(APP
 *
 *       ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER
 */
+extern int angle;
 void ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER(APPW_ACTION_ITEM * pAction, WM_HWIN hScreen, WM_MESSAGE * pMsg, int * pResult) {
 	APPW_SetValue(ID_SCREEN_00,ID_GAUGE_00,ADC3->DR);
 	ADC3->CR2 |=(1<<30); // Démarrer la conversion
+	char texte[50];
+	sprintf(texte, "Angle : %d deg",angle);
+	TEXT_SetText(WM_GetDialogItem(hScreen, ID_TEXT_00),texte);
 }
 
 /*************************** End of file ****************************/

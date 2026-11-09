@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\MiniProjet.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\MiniProjet.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Mon Nov  9 14:57:06 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Mon Nov  9 16:18:01 2026
 <BR><P>
 <H3>Maximum Stack Usage =        696 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1427,8 +1427,8 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
 <LI><a href="#[31f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_char_common
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_IP
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
+<BR>[Called By]<UL><LI><a href="#[2b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_IP
 </UL>
 
 <P><STRONG><a name="[320]"></a>__printf</STRONG> (Thumb, 104 bytes, Stack size 24 bytes, __printf.o(.text))
@@ -2503,11 +2503,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 236 + Unknown Stack Size
 <LI>Call Chain = Check_IP &rArr; TEXT_SetText &rArr; _SetText &rArr; OUTLINED_FUNCTION_2 &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netIF_GetOption
-<LI><a href="#[3c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
-<LI><a href="#[3cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
+<BR>[Calls]<UL><LI><a href="#[3cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
 <LI><a href="#[340]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
 <LI><a href="#[3ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetActiveWindow
+<LI><a href="#[3c9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netIF_GetOption
+<LI><a href="#[3c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
 <LI><a href="#[31e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> gui_singlethread.o(.text.Init_GUIThread)
@@ -9879,14 +9879,10 @@ Global Symbols
 <P><STRONG><a name="[2b4]"></a>ID_SCREEN_00__APPW_NOTIFICATION_INITDIALOG__ID_TIMER_00__APPW_JOB_START</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__APPW_NOTIFICATION_INITDIALOG__ID_TIMER_00__APPW_JOB_START))
 <BR>[Address Reference Count : 1]<UL><LI> id_screen_00.o(.rodata._aAction)
 </UL>
-<P><STRONG><a name="[2b3]"></a>ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED</STRONG> (Thumb, 64 bytes, Stack size 8 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED &rArr; APPW_GetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
+<P><STRONG><a name="[2b3]"></a>ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED))
+<BR><BR>[Stack]<UL><LI>Max Depth = 240<LI>Call Chain = ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED &rArr; APPW_GetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[361]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetValue
-<LI><a href="#[678]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[677]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_i2d
-<LI><a href="#[67a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2uiz
-<LI><a href="#[679]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> id_screen_00.o(.rodata._aAction)
 </UL>
@@ -9908,10 +9904,14 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> id_screen_00.o(.rodata._aAction)
 </UL>
-<P><STRONG><a name="[2b5]"></a>ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER</STRONG> (Thumb, 34 bytes, Stack size 8 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER))
-<BR><BR>[Stack]<UL><LI>Max Depth = 248<LI>Call Chain = ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER &rArr; APPW_SetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
+<P><STRONG><a name="[2b5]"></a>ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER</STRONG> (Thumb, 80 bytes, Stack size 72 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER))
+<BR><BR>[Stack]<UL><LI>Max Depth = 312 + Unknown Stack Size
+<LI>Call Chain = ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER &rArr; APPW_SetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
+<LI><a href="#[3cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
+<LI><a href="#[340]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
+<LI><a href="#[31e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> id_screen_00.o(.rodata._aAction)
 </UL>
@@ -11926,8 +11926,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetText
 </UL>
-<BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_IP
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
+<BR>[Called By]<UL><LI><a href="#[2b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER
+<LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_IP
 <LI><a href="#[7b0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT__SetDec
 <LI><a href="#[14b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_OBJECT_TEXT_cb
 <LI><a href="#[2d3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetItem
@@ -12557,7 +12557,6 @@ Global Symbols
 
 <P><STRONG><a name="[3ca]"></a>WM_GetActiveWindow</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, wm.o(.text.WM_GetActiveWindow))
 <BR><BR>[Called By]<UL><LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_IP
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
 <LI><a href="#[7e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetDefaultWin
 </UL>
 
@@ -12613,9 +12612,9 @@ Global Symbols
 <LI><a href="#[714]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
 <LI><a href="#[7de]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__GetDialogItem
 </UL>
-<BR>[Called By]<UL><LI><a href="#[33a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_CreateRoot
+<BR>[Called By]<UL><LI><a href="#[2b5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER
+<LI><a href="#[33a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_CreateRoot
 <LI><a href="#[10b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Check_IP
-<LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
 <LI><a href="#[3b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DisposeCoord
 <LI><a href="#[372]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetHandle
 <LI><a href="#[38c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_ProcessMotion
@@ -14911,7 +14910,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[2ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_eth_config_mcast
 <LI><a href="#[934]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_tcp_process
 <LI><a href="#[933]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_igmp_process
-<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 <LI><a href="#[92f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;netETH_ReceiveRaw
 <LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
 <LI><a href="#[92d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_ip4_chk_frame
@@ -14923,6 +14921,7 @@ Global Symbols
 <LI><a href="#[932]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_udp_process
 <LI><a href="#[931]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_icmp_process
 <LI><a href="#[930]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_ip4_reass_frame
+<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> net_config.o(.rodata.sys_fn_run)
 </UL>
@@ -15082,9 +15081,9 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[918]"></a>net_ip4_is_onlink</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, net_ip4.o(.text.net_ip4_is_onlink))
-<BR><BR>[Called By]<UL><LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
-<LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
+<BR><BR>[Called By]<UL><LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
 <LI><a href="#[91b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_find
+<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 <LI><a href="#[913]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_ip4_find_route
 </UL>
 
@@ -16060,8 +16059,7 @@ Global Symbols
 <P><STRONG><a name="[679]"></a>__aeabi_ddiv</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, ddiv.o(x$fpl$ddiv))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_ddiv
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED
-<LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
+<BR>[Called By]<UL><LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
 </UL>
 
@@ -16083,8 +16081,7 @@ Global Symbols
 <P><STRONG><a name="[67a]"></a>__aeabi_d2uiz</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dfixu.o(x$fpl$dfixu))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_d2uiz
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED
-<LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
+<BR>[Called By]<UL><LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
 </UL>
 
 <P><STRONG><a name="[9cc]"></a>_dfixu</STRONG> (Thumb, 90 bytes, Stack size 32 bytes, dfixu.o(x$fpl$dfixu), UNUSED)
@@ -16092,8 +16089,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[677]"></a>__aeabi_i2d</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt))
-<BR><BR>[Called By]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED
-<LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
+<BR><BR>[Called By]<UL><LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
 </UL>
 
 <P><STRONG><a name="[a07]"></a>_dflt</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, dflt_clz.o(x$fpl$dflt), UNUSED)
@@ -16107,8 +16103,7 @@ Global Symbols
 <P><STRONG><a name="[678]"></a>__aeabi_dmul</STRONG> (Thumb, 0 bytes, Stack size 32 bytes, dmul.o(x$fpl$dmul))
 <BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = __aeabi_dmul
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2b3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_ROTARY_00__WM_NOTIFICATION_VALUE_CHANGED
-<LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
+<BR>[Called By]<UL><LI><a href="#[2b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_SLIDER_00__WM_NOTIFICATION_VALUE_CHANGED
 <LI><a href="#[198]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Thread_Test
 </UL>
 
@@ -16140,15 +16135,10 @@ Global Symbols
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[198]"></a>Thread_Test</STRONG> (Thumb, 144 bytes, Stack size 24 bytes, main.o(.text.Thread_Test))
-<BR><BR>[Stack]<UL><LI>Max Depth = 228 + Unknown Stack Size
-<LI>Call Chain = Thread_Test &rArr; TEXT_SetText &rArr; _SetText &rArr; OUTLINED_FUNCTION_2 &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
+<P><STRONG><a name="[198]"></a>Thread_Test</STRONG> (Thumb, 120 bytes, Stack size 0 bytes, main.o(.text.Thread_Test))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Thread_Test &rArr; __aeabi_dmul
 </UL>
 <BR>[Calls]<UL><LI><a href="#[3c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
-<LI><a href="#[3cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
-<LI><a href="#[340]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
-<LI><a href="#[3ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetActiveWindow
-<LI><a href="#[31e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[678]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[7b6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ui2d
 <LI><a href="#[7b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_d2iz
@@ -18982,23 +18972,23 @@ Local Symbols
 <LI><a href="#[8e0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_mem_alloc
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_run
-<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 <LI><a href="#[91d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_enqueue
 <LI><a href="#[8ec]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_notify
 <LI><a href="#[91f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_probe
+<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 </UL>
 
 <P><STRONG><a name="[917]"></a>arp_is_cacheable</STRONG> (Thumb, 54 bytes, Stack size 0 bytes, net_arp.o(.text.arp_is_cacheable))
-<BR><BR>[Called By]<UL><LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
-<LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
+<BR><BR>[Called By]<UL><LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
+<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 </UL>
 
 <P><STRONG><a name="[919]"></a>arp_cache_alloc</STRONG> (Thumb, 94 bytes, Stack size 16 bytes, net_arp.o(.text.arp_cache_alloc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = arp_cache_alloc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
-<LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
+<BR>[Called By]<UL><LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
 <LI><a href="#[91b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_find
+<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 </UL>
 
 <P><STRONG><a name="[8de]"></a>arp_que_free</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, net_arp.o(.text.arp_que_free))
@@ -19007,9 +18997,9 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[8dd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_mem_free
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2fd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_run
-<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 <LI><a href="#[916]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_add
 <LI><a href="#[91b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_find
+<LI><a href="#[91a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;net_arp_cache_early
 </UL>
 
 <P><STRONG><a name="[6ed]"></a>que_free_list</STRONG> (Thumb, 24 bytes, Stack size 8 bytes, net_ip4_frag.o(.text.que_free_list))

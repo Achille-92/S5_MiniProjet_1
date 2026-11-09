@@ -87,15 +87,12 @@ int main(void)
 	RCC->APB1ENR |=(1<<29); //activation DAC
 	RCC->AHB1ENR |=(1<<0);	// activation GPIOA pour DAC
 	RCC->APB2ENR |=(1<<10); // Activation ADC3 pour le potentiomètre
-	RCC->APB2ENR |= (1<<17); // Enable TIM10
 
 	GPIOF->MODER |= (2<<16); //PF8 in AF mode
 	GPIOF->AFR[1]|=(9<<0); //PF8 in AF9 mode
 	GPIOI->MODER |= (1<<4); //PI2 in Output Mode
 	GPIOA->MODER |=(3<<8); //PA4 (DAC) en anaog mode
 	GPIOF->MODER |=(3<<20); //FP10 potentiomètre en analog mode
-	GPIOF->MODER |= (2<<12); // PF6 in AF Mode
-	GPIOF->AFR[0] |= (3<<24); // PF6 in AF3 Mode (IM10_CH1) 
 	
 	// TIM13
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
@@ -113,14 +110,6 @@ int main(void)
 	ADC3->SQR3 |=(8<<0); // Permet d'indiquer que c'est IN8 qu'on associe à la conversion N°0
 	ADC3->CR2 |=(1<<0); // Activer l'ADC3
 	ADC3->CR2 |=(1<<30); // Démarrer la conversion
-	
-	// TIM10
-	TIM10->CCMR1 |= (6<<4);
-	TIM10->CCER |= (1<<0);
-	TIM10->PSC = 7;
-	TIM10->ARR=39999;
-	TIM10->CCR1 = 0;
-	TIM10->CR1 |=(1<<0);
 	
 	
 	/**********************************

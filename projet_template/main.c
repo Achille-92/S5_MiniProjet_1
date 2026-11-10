@@ -23,7 +23,24 @@ void servo_set_angle(int deg);
  *---------------------------------------------------------------------------*/
 osThreadId_t tid_Test;
 int angle;
-
+int temp_tick=0;
+int fin_mesure=0;
+float distance_cm=0;
+void EXTI0_IRQHandler(void){
+	if(EXTI->PR & (1<<0)){
+		EXTI->PR |= (1<<0);
+		if( GPIOA->IDR & (1<<0)){
+			TIM6->CNT = 0;
+			TIM6->CR1 |=(1<<0);
+		}
+		else{
+			TIM6->CR1 &= ~(1<<0);
+			temp_tick=TIM6->CNT;
+			fin_mesure=1;
+		}
+	}
+	
+}
 static void Thread_Test (void *argument)
 {
   (void)argument;
@@ -47,6 +64,11 @@ static void Thread_Test (void *argument)
 		if(angle<0){
 			angle=0;
 			sens=0;
+		}
+		if(fin_mesure){
+			
+			fin_mesure=0;
+			distance_cm=temp_tick/58.0;
 		}
 		
 		servo_set_angle(angle);
@@ -91,6 +113,7 @@ int main(void)
 	RCC->APB2ENR |=(1<<10); // Activation ADC3 pour le potentiomètre
 	RCC->APB2ENR |= (1<<17); // Enable TIM10
 	RCC->APB2ENR |= (1<<14); // Activer SYSCFG pour IRQ sur ECHO
+	RCC->APB1ENR |= (1<<4);//Enable TIM6
 	
 
 	GPIOF->MODER |= (2<<16); //PF8 in AF mode
@@ -106,10 +129,14 @@ int main(void)
 	// TIM13
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
 	TIM13->CCER |= (1<<0); 
-	TIM13->PSC = 7; //prescaler
+	TIM13->PSC = 49; //prescaler
 	TIM13->ARR = 39999; //Periode
 	TIM13->CCR1 = 20000; //rapport cyclique CCR/ARR
 	TIM13->CR1 |= (1<<0);
+	
+	//TIM6 
+	TIM6->PSC = 15;
+	TIM6->ARR = 65535;
 	
 	//Dac
 	DAC->CR |=(1<<0); // output channel 1 sur PA4
@@ -123,11 +150,17 @@ int main(void)
 	// TIM10 pour Trig
 	TIM10->CCMR1 |= (6<<4);
 	TIM10->CCER |= (1<<0);
-	TIM10->PSC = 7;
+	TIM10->PSC = 99;
 	TIM10->ARR=39999;
-	TIM10->CCR1 = 200; // Période de 20ms/40000 = Temps haut à 0.5 µs. Pour 10µs, il faut CCR1 à 200. (ça devrait être 20, mais à l'oscillo c'est 200)
+	TIM10->CCR1 = 20; // Période de 20ms/40000 = Temps haut à 0.5 µs. Pour 10µs, il faut CCR1 à 200. (ça devrait être 20, mais à l'oscillo c'est 200)
 	TIM10->CR1 |=(1<<0);
 	
+	//interruption Pa0
+	EXTI->IMR |= (1<<0);
+	EXTI->RTSR |= (1<<0);
+	EXTI->FTSR |= (1<<0);
+	NVIC_SetPriority(EXTI0_IRQn,5);
+	NVIC_EnableIRQ(EXTI0_IRQn);
 	
 	/**********************************
 	Fin Initialisation périphérique

@@ -27,12 +27,17 @@ Project File Date:  11/10/2026
 <h2>Output:</h2>
 *** Using Compiler 'V6.24', folder: 'C:\Keil\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
+UDP_Socket.c(53): warning: format specifies type 'double' but the argument has type 'int' [-Wformat]
+   53 |                         message = (uint32_t)sprintf((char *)sendbuf, "distance %f\n",distance_cm);
+      |                                                                                ~~    ^~~~~~~~~~~
+      |                                                                                %d
+1 warning generated.
 compiling UDP_Socket.c...
 linking...
 .\Objects\MiniProjet.axf: Warning: L6918W: Execution region RW_IRAM2 placed at 0x20000000 needs padding to ensure alignment 4 of emac_stm32f7xx.o(.bss.ARM.__at_0x2000C000).
-Program Size: Code=218992 RO-data=315428 RW-data=2016 ZI-data=4319136  
+Program Size: Code=219252 RO-data=315428 RW-data=2016 ZI-data=4319136  
 Finished: 0 information, 1 warning and 0 error messages.
-".\Objects\MiniProjet.axf" - 0 Error(s), 1 Warning(s).
+".\Objects\MiniProjet.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 

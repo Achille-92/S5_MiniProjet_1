@@ -70,7 +70,6 @@ static void Thread_Test (void *argument)
 			sens=0;
 		}*/
 		
-		
 		if(fin_mesure){
 			
 			fin_mesure=0;
@@ -142,7 +141,7 @@ int main(void)
 	
 	//TIM6 
 	TIM6->PSC = 99;
-	TIM6->ARR = 65535;
+	TIM6->ARR = 59999;
 	
 	//Dac
 	DAC->CR |=(1<<0); // output channel 1 sur PA4

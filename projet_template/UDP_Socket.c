@@ -11,7 +11,8 @@
 #include "stm32f7xx.h"                  // Device header
 #include "AppWizard.h"
 #include <stdio.h>
- 
+#include <string.h>
+
 int32_t udp_sock;                       // UDP socket handle
 extern int angle;
 extern int distance_cm;
@@ -43,8 +44,18 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
 			message = (uint32_t)sprintf((char *)sendbuf, "ERR Angle pas dans la plage\n");
 		}
 	}
+	
+	else if(strncmp(cmd,"DIST",4)==0){ 
+		if(distance_cm<0){
+			message = (uint32_t)sprintf((char *)sendbuf, "ERR distance negative\n");
+		}
+		else {
+			message = (uint32_t)sprintf((char *)sendbuf, "distance %f\n",distance_cm);
+		}
+	}
+	
 	else {
-			message = (uint32_t)sprintf((char *)sendbuf, "Probleme\n");
+			message = (uint32_t)sprintf((char *)sendbuf, "Commande inconnue\n");
 	}
 	
 	netUDP_Send(socket,addr,sendbuf,message);

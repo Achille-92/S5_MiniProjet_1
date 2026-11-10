@@ -90,8 +90,8 @@ static int Init_TestThread (void)
 
 void servo_set_angle(int deg){
 	int val;
-	val = 25000.0*deg/180.0;
-	TIM13->CCR1 = 5000+val; //rapport cyclique CCR/ARR
+	val = 4000.0*deg/180.0;
+	TIM13->CCR1 = 1000+val; //rapport cyclique CCR/ARR
 	
 }
 
@@ -100,7 +100,7 @@ int main(void)
 {
   configuration_overclock(); //pour pouvoir utiliser l'écran LCD
 
-	/**********************************
+	/********* ,n ,                                                          ,,,*************************
 	Début Initialisation périphérique
 	**********************************/
 	//Initialiser vos périphériques ici
@@ -135,7 +135,7 @@ int main(void)
 	TIM13->CR1 |= (1<<0);
 	
 	//TIM6 
-	TIM6->PSC = 15;
+	TIM6->PSC = 99;
 	TIM6->ARR = 65535;
 	
 	//Dac

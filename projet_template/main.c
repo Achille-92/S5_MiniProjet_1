@@ -27,14 +27,18 @@ int temp_tick=0;
 int fin_mesure=0;
 float distance_cm=0;
 void EXTI0_IRQHandler(void){
+	
 	if(EXTI->PR & (1<<0)){
-		EXTI->PR |= (1<<0);
-		if( GPIOA->IDR & (1<<0)){
+		
+		EXTI->PR |= (1<<0); // clear le bit
+		
+		if( GPIOA->IDR & (1<<0)){ // etat haut
+			
 			TIM6->CNT = 0;
 			TIM6->CR1 |=(1<<0);
 		}
-		else{
-			TIM6->CR1 &= ~(1<<0);
+		else{  // etat bas
+			TIM6->CR1 &= ~(1<<0); 
 			temp_tick=TIM6->CNT;
 			fin_mesure=1;
 		}
@@ -50,7 +54,7 @@ static void Thread_Test (void *argument)
   while (1)
   {
     // Votre boucle de test ici (mesure de distance, balayage du servo, etc.)
-		if(sens == 0){
+		/*if(sens == 0){
 			angle+=2;
 		}
 		else{
@@ -64,11 +68,13 @@ static void Thread_Test (void *argument)
 		if(angle<0){
 			angle=0;
 			sens=0;
-		}
+		}*/
+		
+		
 		if(fin_mesure){
 			
 			fin_mesure=0;
-			distance_cm=temp_tick/58.0;
+			distance_cm=temp_tick/(2.0*58.0);
 		}
 		
 		servo_set_angle(angle);

@@ -21,10 +21,10 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
 	char cmd[len+1]; // +1 pour le caractère de fin de chaîne /0
 	uint8_t *sendbuf;
 	uint32_t i,message;
-	int angle;
+	int a;
 	
 	for (i=0; i<len; i++){
-		if(buf[i] == '\n' || buf[i] == '\r'){
+		if(!(buf[i] == '\n' || buf[i] == '\r')){
 			cmd[i] = (char)buf[i];
 		}
 	}
@@ -33,17 +33,18 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
   sendbuf = netUDP_GetBuffer(64);
 	if(sendbuf == NULL) return (0);
 	
-	if(sscanf(cmd, "ANGLE %d", &angle)==1){
-		message = (uint32_t)sprintf((char *)sendbuf, "OK recu\n");
-		netUDP_Send(socket,addr,sendbuf,message);
+	if(sscanf(cmd, "ANGLE %d", &a)==1){
 		
-		if((angle>=0)&&(angle<=180)){
+		if((a>=0)&&(a<=180)){
 			message = (uint32_t)sprintf((char *)sendbuf, "OK\n");
-			servo_set_angle(angle);
+			angle = a;
 		}
 		else {
 			message = (uint32_t)sprintf((char *)sendbuf, "ERR Angle pas dans la plage\n");
 		}
+	}
+	else {
+			message = (uint32_t)sprintf((char *)sendbuf, "Probleme\n");
 	}
 	
 	netUDP_Send(socket,addr,sendbuf,message);

@@ -8,8 +8,9 @@
 extern void configuration_overclock(void);
 extern int Init_GUIThread (void);
 extern void Init_Ethernet (void);
-
+void balayage (int debut,int fin,int pas);
 void servo_set_angle(int deg);
+
 
 #ifdef _RTE_
 #include "RTE_Components.h"             // Component selection
@@ -26,6 +27,8 @@ int angle;
 int temp_tick=0;
 int fin_mesure=0;
 float distance_cm=0;
+float tab_distance_cm[181];
+extern uint32_t message;
 void EXTI0_IRQHandler(void){
 	
 	if(EXTI->PR & (1<<0)){
@@ -99,7 +102,16 @@ void servo_set_angle(int deg){
 	TIM13->CCR1 = 1000+val; //rapport cyclique CCR/ARR
 	
 }
-
+void balayage (int debut,int fin,int pas){
+	
+	for(int i=debut;i<=fin;i+=pas){
+		servo_set_angle(i);
+		osDelay(50);
+		tab_distance_cm[i]=temp_tick/(2.0*58.0);
+		
+	}
+	
+}
 
 int main(void)
 {

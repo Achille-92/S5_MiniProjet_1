@@ -16,13 +16,16 @@
 int32_t udp_sock;                       // UDP socket handle
 extern int angle;
 extern float distance_cm;
+extern float tab_distance_cm[181];
 extern void servo_set_angle(int);
+extern void balayage (int debut,int fin,int pas);
+uint32_t i,message;
 // Notify the user application about UDP socket events.
 uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf, uint32_t len) {
 	char cmd[len+1]; // +1 pour le caract�re de fin de cha�ne /0
 	uint8_t *sendbuf;
-	uint32_t i,message;
-	int a;
+	
+	int a,debut,fin,pas;
 	
 	for (i=0; i<len; i++){
 		if(!(buf[i] == '\n' || buf[i] == '\r')){
@@ -39,6 +42,22 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
 		if((a>=0)&&(a<=180)){
 			message = (uint32_t)sprintf((char *)sendbuf, "OK\n");
 			angle = a;
+		}
+		else {
+			message = (uint32_t)sprintf((char *)sendbuf, "ERR Angle pas dans la plage\n");
+		}
+	}
+	
+	else if(sscanf(cmd, "SCAN %d %d %d", &debut,&fin,&pas)==1){
+		
+		if((debut>=0)&&(fin<=180)){
+			
+			balayage(debut,fin,pas);
+			message=0;
+			for(int j=debut;j<=fin;j+=pas){
+				message += (uint32_t)sprintf((char *)(sendbuf+message), "angle %d dist %f\n",j,tab_distance_cm[j]);
+			}
+			message += (uint32_t)sprintf((char *)(sendbuf+message), "END\n");
 		}
 		else {
 			message = (uint32_t)sprintf((char *)sendbuf, "ERR Angle pas dans la plage\n");

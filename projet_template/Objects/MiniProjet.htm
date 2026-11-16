@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\MiniProjet.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\MiniProjet.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Mon Nov 16 09:19:33 2026
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6240002: Last Updated: Mon Nov 16 09:54:53 2026
 <BR><P>
 <H3>Maximum Stack Usage =        696 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1452,7 +1452,7 @@ Global Symbols
 <P><STRONG><a name="[a24]"></a>_ll_udiv</STRONG> (Thumb, 240 bytes, Stack size 48 bytes, lludivv7m.o(.text), UNUSED)
 
 <P><STRONG><a name="[32b]"></a>__2sprintf</STRONG> (Thumb, 38 bytes, Stack size 32 bytes, __2sprintf.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 136 + Unknown Stack Size
 <LI>Call Chain = __2sprintf &rArr; _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sputc
@@ -1487,8 +1487,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[311]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_d
 </UL>
 
-<P><STRONG><a name="[32e]"></a>__printf</STRONG> (Thumb, 270 bytes, Stack size 32 bytes, __printf_wp.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 32 + Unknown Stack Size
+<P><STRONG><a name="[32e]"></a>__printf</STRONG> (Thumb, 308 bytes, Stack size 40 bytes, __printf_flags_wp.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 40 + Unknown Stack Size
 <LI>Call Chain = __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[330]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_printf_percent
@@ -1764,7 +1764,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[32c]"></a>_printf_char_common</STRONG> (Thumb, 32 bytes, Stack size 64 bytes, _printf_char_common.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
 <LI>Call Chain = _printf_char_common &rArr; __printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[32e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__printf
@@ -1904,8 +1904,8 @@ Global Symbols
 <LI><a href="#[352]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_EnableWindow
 </UL>
 <BR>[Address Reference Count : 3]<UL><LI> orotary.o(.rodata._aJobs)
-<LI> oslider.o(.rodata._aJobs)
 <LI> oswitch.o(.rodata._aJobs)
+<LI> oslider.o(.rodata._aJobs)
 </UL>
 <P><STRONG><a name="[353]"></a>APPW_CalcCond</STRONG> (Thumb, 92 bytes, Stack size 40 bytes, appwizard_condition.o(.text.APPW_CalcCond))
 <BR><BR>[Stack]<UL><LI>Max Depth = 328<LI>Call Chain = APPW_CalcCond &rArr; APPW_GetAtomValue &rArr; APPW_GetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
@@ -2497,8 +2497,7 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[360]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__SendMessage
 <LI><a href="#[391]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetHandle
 </UL>
-<BR>[Called By]<UL><LI><a href="#[2bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER
-<LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AnimFunc
+<BR>[Called By]<UL><LI><a href="#[158]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_AnimFunc
 </UL>
 
 <P><STRONG><a name="[3c3]"></a>APPW_SetVarData</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, appwizard_var.o(.text.APPW_SetVarData))
@@ -2920,7 +2919,7 @@ Global Symbols
 <P><STRONG><a name="[95]"></a>ETH_IRQHandler</STRONG> (Thumb, 68 bytes, Stack size 0 bytes, emac_stm32f7xx.o(.text.ETH_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f746xx.o(RESET)
 </UL>
-<P><STRONG><a name="[5e]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, main.o(.text.EXTI0_IRQHandler))
+<P><STRONG><a name="[5e]"></a>EXTI0_IRQHandler</STRONG> (Thumb, 78 bytes, Stack size 0 bytes, main.o(.text.EXTI0_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f746xx.o(RESET)
 </UL>
 <P><STRONG><a name="[974]"></a>EvrRtxDelay</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, rtx_evr.o(.text.EvrRtxDelay))
@@ -3562,9 +3561,9 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[44a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_4
 </UL>
-<BR>[Called By]<UL><LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
-<LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
+<BR>[Called By]<UL><LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
 <LI><a href="#[52e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawPie
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[508]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_2
 </UL>
 
@@ -3997,11 +3996,11 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FlushLine
 </UL>
-<BR>[Called By]<UL><LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
-<LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
+<BR>[Called By]<UL><LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
 <LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillRoundedRect
 <LI><a href="#[489]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawRoundedFrame
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[46b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_FillEllipseAA_HiRes_XL
 <LI><a href="#[451]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_DrawCircleAA_HiRes
 <LI><a href="#[465]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_FillCircleAA_HiRes
@@ -4087,10 +4086,10 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[486]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_Init
 </UL>
-<BR>[Called By]<UL><LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
-<LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
+<BR>[Called By]<UL><LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
 <LI><a href="#[493]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillRoundedRect
 <LI><a href="#[489]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawRoundedFrame
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[46b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_FillEllipseAA_HiRes_XL
 <LI><a href="#[451]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_DrawCircleAA_HiRes
 <LI><a href="#[465]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_FillCircleAA_HiRes
@@ -5613,8 +5612,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[5b1]"></a>GUI_DEVICE__GetpDriver</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, gui_device.o(.text.GUI_DEVICE__GetpDriver))
-<BR><BR>[Called By]<UL><LI><a href="#[6c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetNumLayers
-<LI><a href="#[6cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_InitLUT
+<BR><BR>[Called By]<UL><LI><a href="#[6cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_InitLUT
 <LI><a href="#[5ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_SelectLayer
 <LI><a href="#[60b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MULTIBUF_EndEx
 <LI><a href="#[609]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_MULTIBUF_BeginEx
@@ -5625,6 +5623,7 @@ Global Symbols
 <LI><a href="#[6cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetpfColor2IndexEx
 <LI><a href="#[6c7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetPaletteEx
 <LI><a href="#[6c0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetDevProp
+<LI><a href="#[6c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetNumLayers
 <LI><a href="#[666]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__ManageCacheEx
 <LI><a href="#[6be]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_ExitEx
 <LI><a href="#[f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_HandlePID
@@ -6602,13 +6601,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[364]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Unlock
 <LI><a href="#[378]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_Lock
 </UL>
-<BR>[Called By]<UL><LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
-<LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
+<BR>[Called By]<UL><LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[483]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawCircle
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
 <LI><a href="#[509]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawCircle
 <LI><a href="#[489]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawRoundedFrame
 <LI><a href="#[52e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawPie
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[451]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_DrawCircleAA_HiRes
 <LI><a href="#[50c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawEllipse
 <LI><a href="#[547]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_FillEllipse
@@ -7067,7 +7066,6 @@ Global Symbols
 <LI><a href="#[42d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_SetDecMode
 <LI><a href="#[421]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_CreateUser
 <LI><a href="#[736]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_1
-<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[483]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawCircle
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
@@ -7109,6 +7107,7 @@ Global Symbols
 <LI><a href="#[4fe]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringInRectWrap
 <LI><a href="#[4fa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DispStringInRectMax
 <LI><a href="#[48f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillCircle
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[573]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetPixelIndex
 <LI><a href="#[3fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_UC_Encode
 <LI><a href="#[3f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_UC_GetCharCode
@@ -8199,12 +8198,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GAUGE_Callback
 <LI><a href="#[367]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_DrawFocusRect
 <LI><a href="#[46e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GL_SetDefault
-<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
 <LI><a href="#[1f4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Func_AA_DRAW_ROUNDED_FRAME
 <LI><a href="#[1ed]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_Func_SET_PENSIZE
 <LI><a href="#[52e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawPie
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 </UL>
 
 <P><STRONG><a name="[46f]"></a>GUI_SetTextAlign</STRONG> (Thumb, 24 bytes, Stack size 16 bytes, gui_common.o(.text.GUI_SetTextAlign))
@@ -8774,7 +8773,6 @@ Global Symbols
 <LI><a href="#[42f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_SetMaxLen
 <LI><a href="#[421]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EDIT_CreateUser
 <LI><a href="#[7ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_SetText
-<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[483]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawCircle
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
@@ -8828,6 +8826,7 @@ Global Symbols
 <LI><a href="#[15]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawStreamedBitmapExAuto
 <LI><a href="#[490]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillEllipseXL
 <LI><a href="#[48f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillCircle
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[573]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GetPixelIndex
 <LI><a href="#[3fb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_UC_Encode
 <LI><a href="#[3f3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_UC_GetCharCode
@@ -10074,12 +10073,11 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> id_screen_00.o(.rodata._aAction)
 </UL>
-<P><STRONG><a name="[2bb]"></a>ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER</STRONG> (Thumb, 104 bytes, Stack size 80 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER))
-<BR><BR>[Stack]<UL><LI>Max Depth = 320 + Unknown Stack Size
-<LI>Call Chain = ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER &rArr; APPW_SetValue &rArr; WM__SendMessage &rArr; WM_DefaultProc &rArr; WM_GetInsideRectExScrollbar &rArr; WM_GetDialogItem &rArr; __GetDialogItem &rArr; _GetDialogItem &rArr;  _GetDialogItem (Cycle)
+<P><STRONG><a name="[2bb]"></a>ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER</STRONG> (Thumb, 72 bytes, Stack size 80 bytes, id_screen_00_slots.o(.text.ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER))
+<BR><BR>[Stack]<UL><LI>Max Depth = 284 + Unknown Stack Size
+<LI>Call Chain = ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER &rArr; TEXT_SetText &rArr; _SetText &rArr; OUTLINED_FUNCTION_2 &rArr; WM_InvalidateWindow &rArr; WM_InvalidateRect &rArr; WM__InvalidateRectEx &rArr; WM__InvalidateRect &rArr;  WM__InvalidateRect (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
-<LI><a href="#[3ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
+<BR>[Calls]<UL><LI><a href="#[3ea]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TEXT_SetText
 <LI><a href="#[35f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
 <LI><a href="#[32b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__2sprintf
 <LI><a href="#[69a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_f2d
@@ -10957,11 +10955,11 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = LCD_InitLUT &rArr; LCD_SetLUTEntryEx
 </UL>
 <BR>[Calls]<UL><LI><a href="#[5e5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetBitsPerPixelEx
-<LI><a href="#[6c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetNumLayers
 <LI><a href="#[5b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DEVICE__GetpDriver
 <LI><a href="#[49e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Index2Color
 <LI><a href="#[6d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_SetLUTEntryEx
 <LI><a href="#[6c4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetNumColorsEx
+<LI><a href="#[6c5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_GetNumLayers
 </UL>
 <BR>[Called By]<UL><LI><a href="#[579]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LCD_Init
 </UL>
@@ -14151,7 +14149,6 @@ Global Symbols
 <LI><a href="#[413]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__InitIVRSearch
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ClearRect
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__Paint1
-<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[483]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawCircle
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
@@ -14182,6 +14179,7 @@ Global Symbols
 <LI><a href="#[4f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__DispLine
 <LI><a href="#[490]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillEllipseXL
 <LI><a href="#[48f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillCircle
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawStreamedBitmapExLoop
 <LI><a href="#[583]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG_DrawEx
 <LI><a href="#[54b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GIF_DrawSubEx
@@ -14273,7 +14271,6 @@ Global Symbols
 <LI><a href="#[372]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_DrawBitmap
 <LI><a href="#[139]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ClearRect
 <LI><a href="#[191]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM__Paint1
-<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[485]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawLine
 <LI><a href="#[483]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawCircle
 <LI><a href="#[47e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawArcHR
@@ -14302,6 +14299,7 @@ Global Symbols
 <LI><a href="#[4f7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI__DispLine
 <LI><a href="#[490]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillEllipseXL
 <LI><a href="#[48f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_FillCircle
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 <LI><a href="#[53d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_DrawStreamedBitmapExLoop
 <LI><a href="#[583]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_JPEG_DrawEx
 <LI><a href="#[54b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_GIF_DrawSubEx
@@ -14544,13 +14542,13 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[193]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_h2p
 <LI><a href="#[411]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_DefaultProc
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
-<LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetValue
+<BR>[Called By]<UL><LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetValue
 <LI><a href="#[377]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_Exec
 <LI><a href="#[359]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_CreateRoot
 <LI><a href="#[3a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_ProcessActions
 <LI><a href="#[155]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_OBJECT_WINDOW_cb
 <LI><a href="#[7aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SetFocus
+<LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
 <LI><a href="#[368]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_SendMessage
 <LI><a href="#[35d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW__GetDispose
 <LI><a href="#[3b1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SendNotification
@@ -14784,7 +14782,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> ft5336.o(.data.ft5336_ts_drv)
 </UL>
-<P><STRONG><a name="[321]"></a>main</STRONG> (Thumb, 418 bytes, Stack size 0 bytes, main.o(.text.main))
+<P><STRONG><a name="[321]"></a>main</STRONG> (Thumb, 422 bytes, Stack size 0 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 224<LI>Call Chain = main &rArr; configuration_overclock &rArr; BSP_SDRAM_Init &rArr; BSP_SDRAM_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[91d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osKernelStart
@@ -16289,7 +16287,7 @@ Global Symbols
 <LI><a href="#[578]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_X_Init
 </UL>
 
-<P><STRONG><a name="[10f]"></a>udp_cb_func</STRONG> (Thumb, 452 bytes, Stack size 36 bytes, udp_socket.o(.text.udp_cb_func))
+<P><STRONG><a name="[10f]"></a>udp_cb_func</STRONG> (Thumb, 456 bytes, Stack size 36 bytes, udp_socket.o(.text.udp_cb_func))
 <BR><BR>[Stack]<UL><LI>Max Depth = 260 + Unknown Stack Size
 <LI>Call Chain = udp_cb_func &rArr; __0sscanf &rArr; __vfscanf_char &rArr; __vfscanf &rArr; _scanf_int
 </UL>
@@ -17143,8 +17141,8 @@ Local Symbols
 <BR>[Calls]<UL><LI><a href="#[35f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;WM_GetDialogItem
 <LI><a href="#[37e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetRootInfoByRootId
 </UL>
-<BR>[Called By]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
-<LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetValue
+<BR>[Called By]<UL><LI><a href="#[380]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetValue
+<LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
 <LI><a href="#[3d5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW__GetTextItem
 <LI><a href="#[38b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_GetTextLocked
 </UL>
@@ -19955,9 +19953,9 @@ Local Symbols
 <P><STRONG><a name="[158]"></a>_AnimFunc</STRONG> (Thumb, 218 bytes, Stack size 56 bytes, appwizard_action.o(.text._AnimFunc))
 <BR><BR>[Stack]<UL><LI>Max Depth = 536<LI>Call Chain = _AnimFunc &rArr; _SetAtomValueDisposeDetail &rArr; _SetDisposeCoord &rArr; _DisposeObjectAndDependent &rArr; APPW_Dispose &rArr; _DisposeWindow &rArr;  _DisposeWindow (Cycle)
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
-<LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetAtomValue
+<BR>[Calls]<UL><LI><a href="#[354]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetAtomValue
 <LI><a href="#[37d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_GetAtomInfo
+<LI><a href="#[3c2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetValue
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ALLOC_UnlockH
 <LI><a href="#[3c3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;APPW_SetVarData
 <LI><a href="#[4b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_ANIM_GetItemDataLocked
@@ -20420,8 +20418,8 @@ Local Symbols
 <P><STRONG><a name="[1f3]"></a>_Func_AA_DRAW_PIE</STRONG> (Thumb, 12 bytes, Stack size 16 bytes, appwizard_drawing.o(.text._Func_AA_DRAW_PIE))
 <BR><BR>[Stack]<UL><LI>Max Depth = 260<LI>Call Chain = _Func_AA_DRAW_PIE &rArr; GUI_AA_DrawPie &rArr; WM__InitIVRSearch &rArr; WM__GetNextIVR &rArr; WM__ActivateClipRect &rArr; _SetClipRectUserIntersect &rArr; LCD_SetClipRectEx &rArr; GUI__IntersectRects
 </UL>
-<BR>[Calls]<UL><LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
-<LI><a href="#[8b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_2
+<BR>[Calls]<UL><LI><a href="#[8b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OUTLINED_FUNCTION_2
+<LI><a href="#[488]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GUI_AA_DrawPie
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> appwizard_drawing.o(.rodata.APPW__aDrawingFunc)
 </UL>

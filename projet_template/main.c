@@ -30,23 +30,17 @@ float distance_cm=0;
 float tab_distance_cm[181];
 extern uint32_t message;
 void EXTI0_IRQHandler(void){
-	
-	if(EXTI->PR & (1<<0)){
-		
-		EXTI->PR |= (1<<0); // clear le bit
+		EXTI->PR = (1<<0); // clear le bit
 		
 		if( GPIOA->IDR & (1<<0)){ // etat haut
-			
-			TIM6->CNT = 0;
 			TIM6->CR1 |=(1<<0);
 		}
 		else{  // etat bas
-			TIM6->CR1 &= ~(1<<0); 
 			temp_tick=TIM6->CNT;
+			TIM6->CR1 &= ~(1<<0); 
 			fin_mesure=1;
+			TIM6->CNT = 0;
 		}
-	}
-	
 }
 static void Thread_Test (void *argument)
 {
@@ -76,7 +70,7 @@ static void Thread_Test (void *argument)
 		if(fin_mesure){
 			
 			fin_mesure=0;
-			distance_cm=temp_tick/(2.0*58.0);
+			distance_cm=temp_tick/(58.0);
 		}
 		
 		servo_set_angle(angle);
@@ -107,7 +101,7 @@ void balayage (int debut,int fin,int pas){
 	for(int i=debut;i<=fin;i+=pas){
 		servo_set_angle(i);
 		osDelay(50);
-		tab_distance_cm[i]=temp_tick/(2.0*58.0);
+		tab_distance_cm[i]=temp_tick/(58.0);
 		
 	}
 	
@@ -167,9 +161,9 @@ int main(void)
 	// TIM10 pour Trig
 	TIM10->CCMR1 |= (6<<4);
 	TIM10->CCER |= (1<<0);
-	TIM10->PSC = 99;
+	TIM10->PSC = 299;
 	TIM10->ARR=39999;
-	TIM10->CCR1 = 20; // Période de 20ms/40000 = Temps haut à 0.5 µs. Pour 10µs, il faut CCR1 à 200. (ça devrait être 20, mais à l'oscillo c'est 200)
+	TIM10->CCR1 = 7; // Période de 60ms/40000 = Temps haut à 1.5 µs. Pour 10µs, il faut CCR1 à 6.666666667.
 	TIM10->CR1 |=(1<<0);
 	
 	//interruption Pa0

@@ -98,8 +98,8 @@ void ID_SCREEN_00__APPW_NOTIFICATION_INITDIALOG__ID_TIMER_00__APPW_JOB_START(APP
 extern int angle;
 extern float distance_cm;
 void ID_SCREEN_00__ID_TIMER_00__APPW_NOTIFICATION_TIMER(APPW_ACTION_ITEM * pAction, WM_HWIN hScreen, WM_MESSAGE * pMsg, int * pResult) {
-	APPW_SetValue(ID_SCREEN_00,ID_GAUGE_00,ADC3->DR);
-	ADC3->CR2 |=(1<<30); // Démarrer la conversion
+	//APPW_SetValue(ID_SCREEN_00,ID_GAUGE_00,ADC3->DR);
+	//ADC3->CR2 |=(1<<30); // Démarrer la conversion
 	char texte[50];
 	sprintf(texte, "A: %d deg d: %3.1f cm",angle,distance_cm);
 	TEXT_SetText(WM_GetDialogItem(hScreen, ID_TEXT_00),texte);

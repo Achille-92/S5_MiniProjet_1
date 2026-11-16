@@ -34,7 +34,7 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
 	}
 	cmd[i] = '\0';
 	
-  sendbuf = netUDP_GetBuffer(64);
+  sendbuf = netUDP_GetBuffer(500);
 	if(sendbuf == NULL) return (0);
 	
 	if(sscanf(cmd, "ANGLE %d", &a)==1){
@@ -48,14 +48,14 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
 		}
 	}
 	
-	else if(sscanf(cmd, "SCAN %d %d %d", &debut,&fin,&pas)==1){
+	else if(sscanf(cmd, "SCAN %d %d %d", &debut,&fin,&pas)==3){
 		
 		if((debut>=0)&&(fin<=180)){
 			
 			balayage(debut,fin,pas);
 			message=0;
 			for(int j=debut;j<=fin;j+=pas){
-				message += (uint32_t)sprintf((char *)(sendbuf+message), "angle %d dist %f\n",j,tab_distance_cm[j]);
+				message += (uint32_t)sprintf((char *)(sendbuf+message), "angle %03d dist %03.1f\n",j,tab_distance_cm[j]);
 			}
 			message += (uint32_t)sprintf((char *)(sendbuf+message), "END\n");
 		}
@@ -74,7 +74,7 @@ uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf,
 	}
 	
 	else {
-			message = (uint32_t)sprintf((char *)sendbuf, "Commande inconnue\n");
+			message = (uint32_t)sprintf((char *)sendbuf, "ERR Commande inconnue\n");
 	}
 	
 	netUDP_Send(socket,addr,sendbuf,message);

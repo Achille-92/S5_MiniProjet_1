@@ -8,7 +8,7 @@ namespace {
 
 constexpr int kMargin = 28;          // place pour les étiquettes autour du demi-cercle
 constexpr int kRings = 4;
-constexpr double kRangeStepCm = 40.0;   // la portée est arrondie à un multiple de 40 cm
+constexpr double kRangeCm = 400.0;      // portée maximale du HC-SR04 : échelle fixe
 constexpr int kAngleStepDeg = 30;
 
 QPointF polar(const QPointF &center, double radius, int angleDeg)
@@ -47,17 +47,6 @@ void RadarWidget::clear()
     update();
 }
 
-double RadarWidget::rangeCm() const
-{
-    double maxCm = 0.0;
-    for (const ScanPoint &p : m_points) {
-        if (p.hasEcho && p.cm > maxCm) {
-            maxCm = p.cm;
-        }
-    }
-    return qMax(kRangeStepCm, qCeil(maxCm / kRangeStepCm) * kRangeStepCm);
-}
-
 void RadarWidget::paintEvent(QPaintEvent *)
 {
     QPainter painter(this);
@@ -69,7 +58,7 @@ void RadarWidget::paintEvent(QPaintEvent *)
         return;
     }
     const QPointF center(area.center().x(), area.bottom());
-    const double range = rangeCm();
+    const double range = kRangeCm;
 
     const QColor textColor = palette().color(QPalette::Text);
     QColor gridColor = textColor;

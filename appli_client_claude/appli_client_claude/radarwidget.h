@@ -25,8 +25,6 @@ protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-    double rangeCm() const;   // portée affichée, multiple de 4 anneaux
-
     QVector<ScanPoint> m_points;
 };
 

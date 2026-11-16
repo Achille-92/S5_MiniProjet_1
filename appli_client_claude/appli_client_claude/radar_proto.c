@@ -201,6 +201,9 @@ proto_status_t proto_parse_dist(const char *reply, double *cm, char *detail, siz
     }
     rest = after_keyword(line, "DIST");
     if (rest == NULL) {
+        rest = after_keyword(line, "distance");   /* variante de la carte */
+    }
+    if (rest == NULL) {
         return malformed(line, detail, detail_size);
     }
     if (strcmp(rest, "TIMEOUT") == 0) {
@@ -213,17 +216,29 @@ proto_status_t proto_parse_dist(const char *reply, double *cm, char *detail, siz
     return PROTO_OK;
 }
 
-/* Une ligne de balayage : "<angle> <cm>" ou "<angle> TIMEOUT". */
+/* Une ligne de balayage. Formats acceptés :
+ *   "<angle> <cm>"  ou  "<angle> TIMEOUT"          (protocole du PDF)
+ *   "angle <angle> dist <cm>"  (et "... dist TIMEOUT")   (réponse de la carte) */
 static int parse_scan_line(const char *line, scan_point_t *point)
 {
+    const char *start = after_keyword(line, "angle");
+    const char *after_dist;
     char *end;
-    long angle = strtol(line, &end, 10);
+    long angle;
 
-    if (end == line || !isspace((unsigned char)*end) || !angle_is_valid((int)angle)) {
+    if (start == NULL) {
+        start = line;
+    }
+    angle = strtol(start, &end, 10);
+    if (end == start || !isspace((unsigned char)*end) || !angle_is_valid((int)angle)) {
         return 0;
     }
     while (isspace((unsigned char)*end)) {
         end++;
+    }
+    after_dist = after_keyword(end, "dist");
+    if (after_dist != NULL) {
+        end = (char *)after_dist;
     }
     point->angle = (int)angle;
     if (strcmp(end, "TIMEOUT") == 0) {
@@ -231,10 +246,14 @@ static int parse_scan_line(const char *line, scan_point_t *point)
         point->has_echo = 0;
         return 1;
     }
-    if (!parse_number(end, &point->cm) || point->cm < 0.0) {
+    if (!parse_number(end, &point->cm)) {
         return 0;
     }
-    point->has_echo = 1;
+    /* Une distance négative signale une mesure ratée : pas d'écho. */
+    point->has_echo = point->cm >= 0.0;
+    if (!point->has_echo) {
+        point->cm = 0.0;
+    }
     return 1;
 }
 

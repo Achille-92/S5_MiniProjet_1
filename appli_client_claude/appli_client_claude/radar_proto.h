@@ -5,6 +5,9 @@
  *   DIST                      -> DIST <cm> | DIST TIMEOUT | ERR <motif>
  *   SCAN <début> <fin> <pas>  -> lignes "<angle> <cm>" puis END | ERR <motif>
  *
+ * Le client accepte aussi le format actuel de la carte : "distance <cm>" pour
+ * DIST, et "angle <a> dist <cm>" pour chaque ligne de SCAN.
+ *
  * Messages en ASCII terminés par '\n' (la carte ou netcat peuvent envoyer
  * "\r\n" : les deux sont acceptés). Distances en cm, une décimale.
  *

@@ -8,10 +8,12 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
-    dialog.cpp
+    dialog.cpp \
+    mythread.cpp
 
 HEADERS += \
-    dialog.h
+    dialog.h \
+    mythread.h
 
 FORMS += \
     dialog.ui
@@ -20,3 +22,5 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+LIBS += -lws2_32

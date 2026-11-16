@@ -15,11 +15,11 @@
 
 int32_t udp_sock;                       // UDP socket handle
 extern int angle;
-extern int distance_cm;
+extern float distance_cm;
 extern void servo_set_angle(int);
 // Notify the user application about UDP socket events.
 uint32_t udp_cb_func (int32_t socket, const  NET_ADDR *addr, const uint8_t *buf, uint32_t len) {
-	char cmd[len+1]; // +1 pour le caractère de fin de chaîne /0
+	char cmd[len+1]; // +1 pour le caractï¿½re de fin de chaï¿½ne /0
 	uint8_t *sendbuf;
 	uint32_t i,message;
 	int a;

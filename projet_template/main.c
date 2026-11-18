@@ -29,17 +29,19 @@ int fin_mesure=0;
 float distance_cm=0;
 float tab_distance_cm[181];
 extern uint32_t message;
-void EXTI0_IRQHandler(void){
-		EXTI->PR = (1<<0); // clear le bit
-		
-		if( GPIOA->IDR & (1<<0)){ // etat haut
-			TIM6->CR1 |=(1<<0);
-		}
-		else{  // etat bas
-			temp_tick=TIM6->CNT;
-			TIM6->CR1 &= ~(1<<0); 
-			fin_mesure=1;
-			TIM6->CNT = 0;
+void EXTI9_5_IRQHandler(void){
+		if(EXTI->PR & (1<<6)){ // interruption venant de la ligne 6 (PG6)
+			EXTI->PR = (1<<6); // clear le bit
+			
+			if( GPIOG->IDR & (1<<6)){ // etat haut
+				TIM6->CR1 |=(1<<0);
+			}
+			else{  // etat bas
+				temp_tick=TIM6->CNT;
+				TIM6->CR1 &= ~(1<<0); 
+				fin_mesure=1;
+				TIM6->CNT = 0;
+			}
 		}
 }
 static void Thread_Test (void *argument)
@@ -122,7 +124,9 @@ int main(void)
 	RCC->APB1ENR |=(1<<29); //activation DAC
 	RCC->AHB1ENR |=(1<<0);	// activation GPIOA pour DAC, et ECHO
 	RCC->APB2ENR |=(1<<10); // Activation ADC3 pour le potentiomètre
-	RCC->APB2ENR |= (1<<17); // Enable TIM10
+	RCC->AHB1ENR |= (1<<1); // Enable GPIOB pour TRIG (PB14)
+	RCC->AHB1ENR |= (1<<6); // Enable GPIOG pour ECHO (PG6)
+	RCC->APB1ENR |= (1<<6); // Enable TIM12
 	RCC->APB2ENR |= (1<<14); // Activer SYSCFG pour IRQ sur ECHO
 	RCC->APB1ENR |= (1<<4);//Enable TIM6
 	
@@ -132,10 +136,9 @@ int main(void)
 	GPIOI->MODER |= (1<<4); //PI2 in Output Mode
 	GPIOA->MODER |=(3<<8); //PA4 (DAC) en anaog mode
 	GPIOF->MODER |=(3<<20); //FP10 potentiomètre en analog mode
-	GPIOF->MODER |= (2<<12); // PF6 in AF Mode
-	GPIOF->AFR[0] |= (3<<24); // PF6 in AF3 Mode (IM10_CH1) 
-	// Metre IRQ EXTI0 sur PA0/A0
-	//SYSCFG->EXTICR[0] |= (0<<0); Inutile l'idée est là, on choisit PA[x] pin
+	GPIOB->MODER |= (2<<28); // PB14 in AF Mode (TRIG)
+	GPIOB->AFR[1] |= (9<<24); // PB14 in AF9 Mode (TIM12_CH1)
+	// PG6 (ECHO) reste en entrée (MODER = 00 par défaut)
 	
 	// TIM13
 	TIM13->CCMR1 |= (6<<4); //TIM13_CH1 PWM1
@@ -158,20 +161,22 @@ int main(void)
 	ADC3->CR2 |=(1<<0); // Activer l'ADC3
 	ADC3->CR2 |=(1<<30); // Démarrer la conversion
 	
-	// TIM10 pour Trig
-	TIM10->CCMR1 |= (6<<4);
-	TIM10->CCER |= (1<<0);
-	TIM10->PSC = 299;
-	TIM10->ARR=39999;
-	TIM10->CCR1 = 7; // Période de 60ms/40000 = Temps haut à 1.5 µs. Pour 10µs, il faut CCR1 à 6.666666667.
-	TIM10->CR1 |=(1<<0);
+	// TIM12 pour Trig sur PB14 (APB1 : 100 MHz)
+	TIM12->CCMR1 |= (6<<4); // PWM1 sur CH1
+	TIM12->CCER |= (1<<0);
+	TIM12->PSC = 149; // 100 MHz / 150 -> 1,5 µs par tick
+	TIM12->ARR = 39999; // 40000 x 1,5 µs = 60 ms
+	TIM12->CCR1 = 7; // Temps haut = 7 x 1,5 µs = 10,5 µs
+	TIM12->CR1 |= (1<<0);
 	
-	//interruption Pa0
-	EXTI->IMR |= (1<<0);
-	EXTI->RTSR |= (1<<0);
-	EXTI->FTSR |= (1<<0);
-	NVIC_SetPriority(EXTI0_IRQn,5);
-	NVIC_EnableIRQ(EXTI0_IRQn);
+	//Interruption ECHO sur PG6 (EXTI6)
+	SYSCFG->EXTICR[1] &= ~(0xF<<8); // EXTI6 : effacer bits 11:8
+	SYSCFG->EXTICR[1] |= (6<<8); // EXTI6 relié au port G
+	EXTI->IMR |= (1<<6);
+	EXTI->RTSR |= (1<<6); // front montant
+	EXTI->FTSR |= (1<<6); // front descendant
+	NVIC_SetPriority(EXTI9_5_IRQn,5);
+	NVIC_EnableIRQ(EXTI9_5_IRQn);
 	
 	/**********************************
 	Fin Initialisation périphérique
